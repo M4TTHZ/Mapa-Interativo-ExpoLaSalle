@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpoLaSalle - Mapa Interativo do Evento</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-map-location-dot"></i>
+                <span>ExpoLaSalle</span>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link">Início</a>
+                <a href="#mapa" class="nav-link">Mapa</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Mapa ExpoLaSalle</h2>
+            <p>Navegue interativamente pelos pontos de interesse do evento</p>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <section class="mapa-section" id="mapa">
+            <div class="mapa-container">
+                <aside class="sidebar">
+                    <div class="sidebar-header">
+                        <h3>Filtros e Busca</h3>
+                        <button class="btn-close-sidebar" id="btnCloseSidebar">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Buscar por nome..." 
+                            class="search-input"
+                        >
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Categorias</h4>
+                        <div class="filter-options" id="filterContainer">
+                        </div>
+                    </div>
+
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="btnReset" onclick="centralizarMapa()">
+                            <i class="fas fa-redo"></i> Resetar Mapa
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- Mapa -->
+                <div class="map-wrapper">
+                    <button class="btn-toggle-sidebar" id="btnToggleSidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div id="map" class="map"></div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="sobre-section" id="sobre">
+            <div class="container">
+                <h2>Sobre o Projeto</h2>
+                
+                <div class="sobre-content">
+                    <div class="sobre-card">
+                        <h3><i class="fas fa-bullseye"></i> Objetivo</h3>
+                        <p>
+                            Criar uma aplicação web moderna e responsiva que permite aos visitantes do ExpoLaSalle 
+                            explorar interativamente todos os pontos de interesse do evento através de um mapa intuitivo 
+                            e visualmente atraente.
+                        </p>
+                    </div>
+
+                    <div class="sobre-card">
+                        <h3><i class="fas fa-cogs"></i> Tecnologias Utilizadas</h3>
+                        <ul class="tech-list">
+                            <li><strong>HTML5:</strong> Estrutura semântica e acessível</li>
+                            <li><strong>CSS3:</strong> Design responsivo com Flexbox e Grid</li>
+                            <li><strong>JavaScript:</strong> Interatividade e lógica da aplicação</li>
+                            <li><strong>Leaflet.js:</strong> Biblioteca de mapeamento interativo</li>
+                            <li><strong>OpenStreetMap:</strong> Dados de mapa de código aberto</li>
+                        </ul>
+                    </div>
+
+                    <div class="sobre-card">
+                        <h3><i class="fas fa-lightbulb"></i> Motivos das Escolhas Técnicas</h3>
+                        <ul class="tech-list">
+                            <li><strong>Leaflet.js:</strong> Leve, flexível e fácil de customizar</li>
+                            <li><strong>Vanilla JavaScript:</strong> Sem dependências pesadas, melhor performance</li>
+                            <li><strong>CSS Grid + Flexbox:</strong> Layout moderno e responsivo</li>
+                            <li><strong>Mobile First:</strong> Otimizado para todos os dispositivos</li>
+                        </ul>
+                    </div>
+
+                    <div class="sobre-card full-width">
+                        <h3><i class="fas fa-users"></i> Equipe</h3>
+                        <p>
+                            Projeto desenvolvido como parte do ExpoLaSalle, demonstrando as capacidades 
+                            técnicas em desenvolvimento web moderno, design responsivo e experiência do usuário.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ExpoLaSalle - Mapa Interativo do Evento</p>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    
+    
+    <script src="data/pontos.js"></script>
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>
