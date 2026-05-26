@@ -5,7 +5,7 @@ const pontosDeInteresse = [
     localizacao: "Bloco A",
     descricao: "Ponto de recepção e credenciamento dos visitantes do ExpoLaSalle.",
     horario: "08:00 - 22:00",
-    foto: "",
+    foto: "data/img/logo.png",
     coordenadas: [-13.071252, -55.943881]
   },
   {
@@ -14,7 +14,7 @@ const pontosDeInteresse = [
     localizacao: "Ao lado da barraca de Saúde e Lazer do Projeto Faça Acontecer",
     descricao: "Focado em apresentar o instituto com seus cursos ofertados e proporcionar uma breve experiência com óculos de realidade virtual (VR).",
     horario: "16:00 -  23:00",
-    foto: "",
+    foto: "data/img/senac.png",
     coordenadas: [-13.070779, -55.943606]
   },
   {
@@ -23,7 +23,7 @@ const pontosDeInteresse = [
     localizacao: "Entre as barracas do Rotary Club e do Senai – conjunto de 3 barracas",
     descricao: "Apresentam os cursos ofertados, incluindo amostras científicas produzidas pelos alunos, demonstrando de forma prática o funcionamento de cada amostra.",
     horario: "16:00 - 22:00",
-    foto: "",
+    foto: "data/img/ifmt.png",
     coordenadas: [-13.070677, -55.943225]
   },
   {
@@ -32,7 +32,7 @@ const pontosDeInteresse = [
     localizacao: "Ao final do bloco 4, ao lado da barraca do curso de Medicina Veterinária",
     descricao: "Trouxeram uma exposição de maquinários, explicando suas funções e mostrando seu impacto no campo.",
     horario: "16:00 - 23:00",
-    foto: "",
+    foto: "data/img/guimaraes.png",
     coordenadas: [-13.070971, -55.942844]
   },
   {
@@ -41,7 +41,7 @@ const pontosDeInteresse = [
     localizacao: "Ao lado da barraca da IFMT, perto da praça de alimentação, entre a barraca da Fiat",
     descricao: "Duas barracas apresentando um pouco sobre equipamentos de EPI e os eventos produzidos pelo Sebrae, como o Circuito Gastronômico.",
     horario: "16:00 - 20:00",
-    foto: "",
+    foto: "data/img/senai.jpg",
     coordenadas: [-13.070300, -55.943737]
   },
   {
@@ -50,7 +50,7 @@ const pontosDeInteresse = [
     localizacao: "Empresa fabricante de geomembranas, lonas plásticas, tanques escavados, bolsões para criação de peixes e lagos ornamentais. O estande apresentou soluções voltadas para armazenamento de água, piscicultura e paisagismo ornamental.",
     descricao: "Competições robóticas e demonstrações de drones.",
     horario: "16:00 - 23:00",
-    foto: "",
+    foto: "data/img/geotop.png",
     coordenadas: [-13.070715, -55.944236]
   },
   {
@@ -59,7 +59,7 @@ const pontosDeInteresse = [
     localizacao: "Ao lado da Fiagril – estande de drones",
     descricao: "Empresa voltada para venda, manutenção e prestação de serviços com drones agrícolas da marca XAG. Demonstraram aplicações em pulverização, adubação líquida e sólida, destacando o auxílio da tecnologia em áreas de difícil acesso no campo.",
     horario: "08:00 - 20:00",
-    foto: "",
+    foto: "data/img/fenix.png",
     coordenadas: [-13.070293, -55.943415]
   },
   {
@@ -68,7 +68,7 @@ const pontosDeInteresse = [
     localizacao: "Área de exposição de máquinas agrícolas e construção",
     descricao: "Apresentaram tecnologias da John Deere voltadas para agricultura e construção, incluindo tratores de pequeno, médio e grande porte, como o modelo 9R540 fabricado nos Estados Unidos. Também demonstraram a nova colheitadeira automatizada, com sistemas inteligentes de configuração e automação de colheita.",
     horario: "16:00 - 22:00",
-    foto: "",
+    foto: "data/img/johnDeere.png",
     coordenadas: [-13.070756, -55.942939]
   },
   {
@@ -77,7 +77,7 @@ const pontosDeInteresse = [
     localizacao: "Próximo aos estandes de vacinação e banco ortopédico",
     descricao: "Organização internacional com mais de 120 anos de atuação, destacando projetos sociais e ambientais como erradicação da poliomielite, campanhas de vacinação, banco ortopédico, empréstimo de aparelhos ortopédicos, banco de leite humano, coleta de lixo eletrônico e ações de preservação ambiental, como o projeto “Uma Vida, Uma Árvore”.",
     horario: "16:00 - 22:00",
-    foto: "",
+    foto: "data/img/rotary.png",
     coordenadas: [-13.071056, -55.943326]
   },
 ];
@@ -347,15 +347,28 @@ function configurarEventListeners() {
   
   btnToggleSidebar.addEventListener('click', () => {
     sidebar.classList.toggle('active');
+    // Aguarda a animação da sidebar e força o Leaflet a recalcular o tamanho
+    setTimeout(() => {
+      if (estado.mapa) estado.mapa.invalidateSize();
+    }, 350);
   });
   
   btnCloseSidebar.addEventListener('click', () => {
     sidebar.classList.remove('active');
+    setTimeout(() => {
+      if (estado.mapa) estado.mapa.invalidateSize();
+    }, 350);
   });
   
   document.addEventListener('click', (e) => {
     if (!sidebar.contains(e.target) && !btnToggleSidebar.contains(e.target)) {
+      const wasActive = sidebar.classList.contains('active');
       sidebar.classList.remove('active');
+      if (wasActive) {
+        setTimeout(() => {
+          if (estado.mapa) estado.mapa.invalidateSize();
+        }, 350);
+      }
     }
   });
 }

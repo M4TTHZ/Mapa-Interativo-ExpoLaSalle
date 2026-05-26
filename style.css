@@ -134,8 +134,8 @@ body {
     gap: 0;
     max-width: 1400px;
     margin: 0 auto;
-    height: calc(100vh - 200px);
-    min-height: 600px;
+    height: calc(100vh - 160px);
+    min-height: 360px;
     border-radius: 0.75rem;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
@@ -364,6 +364,49 @@ body {
     width: 100%;
     height: 100%;
     z-index: 1;
+}
+
+/* Responsive behaviour for small screens */
+@media (max-width: 768px) {
+    .mapa-container {
+        flex-direction: column;
+        height: calc(100vh - 140px);
+        min-height: 320px;
+    }
+
+    .sidebar {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        height: 100%;
+        z-index: 60;
+        transition: left 0.32s ease;
+        box-shadow: var(--shadow-lg);
+        background-color: var(--bg-white);
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .btn-toggle-sidebar {
+        display: block;
+        z-index: 70;
+    }
+
+    .btn-close-sidebar {
+        display: block;
+    }
+
+    .map-wrapper {
+        margin-left: 0;
+        height: 100%;
+    }
+
+    #map {
+        min-height: 300px;
+    }
 }
 
 /* Leaflet */
