@@ -1,3 +1,13 @@
+// ===== Dados =====
+const CENTRO = [-13.070893, -55.943891];
+
+const iconesCategoria = {
+  "Acesso": "🚪",
+  "Educação": "📚",
+  "Sustentabilidade": "🌿",
+  "Agricultura": "🌱",
+};
+
 const pontosDeInteresse = [
   {
     nome: "Entrada Principal",
@@ -5,17 +15,17 @@ const pontosDeInteresse = [
     localizacao: "Bloco A",
     descricao: "Ponto de recepção e credenciamento dos visitantes do ExpoLaSalle.",
     horario: "08:00 - 22:00",
-    foto: "data/img/logo.png",
-    coordenadas: [-13.071252, -55.943881]
+    foto: "assets/logo.png",
+    coordenadas: [-13.071252, -55.943881],
   },
   {
     nome: "Senac",
     categoria: "Educação",
     localizacao: "Ao lado da barraca de Saúde e Lazer do Projeto Faça Acontecer",
     descricao: "Focado em apresentar o instituto com seus cursos ofertados e proporcionar uma breve experiência com óculos de realidade virtual (VR).",
-    horario: "16:00 -  23:00",
-    foto: "data/img/senac.png",
-    coordenadas: [-13.070779, -55.943606]
+    horario: "16:00 - 23:00",
+    foto: "assets/senac.png",
+    coordenadas: [-13.070779, -55.943606],
   },
   {
     nome: "IFMT",
@@ -23,17 +33,17 @@ const pontosDeInteresse = [
     localizacao: "Entre as barracas do Rotary Club e do Senai – conjunto de 3 barracas",
     descricao: "Apresentam os cursos ofertados, incluindo amostras científicas produzidas pelos alunos, demonstrando de forma prática o funcionamento de cada amostra.",
     horario: "16:00 - 22:00",
-    foto: "data/img/ifmt.png",
-    coordenadas: [-13.070677, -55.943225]
+    foto: "assets/ifmt.png",
+    coordenadas: [-13.070677, -55.943225],
   },
   {
-    nome: " Massey Ferguson / Guimarães",
+    nome: "Massey Ferguson / Guimarães",
     categoria: "Agricultura",
     localizacao: "Ao final do bloco 4, ao lado da barraca do curso de Medicina Veterinária",
     descricao: "Trouxeram uma exposição de maquinários, explicando suas funções e mostrando seu impacto no campo.",
     horario: "16:00 - 23:00",
-    foto: "data/img/guimaraes.png",
-    coordenadas: [-13.070971, -55.942844]
+    foto: "assets/guimaraes.png",
+    coordenadas: [-13.070971, -55.942844],
   },
   {
     nome: "Senai",
@@ -41,350 +51,194 @@ const pontosDeInteresse = [
     localizacao: "Ao lado da barraca da IFMT, perto da praça de alimentação, entre a barraca da Fiat",
     descricao: "Duas barracas apresentando um pouco sobre equipamentos de EPI e os eventos produzidos pelo Sebrae, como o Circuito Gastronômico.",
     horario: "16:00 - 20:00",
-    foto: "data/img/senai.jpg",
-    coordenadas: [-13.070300, -55.943737]
+    foto: "assets/senai.jpg",
+    coordenadas: [-13.07033, -55.943737],
   },
   {
     nome: "Geotop",
     categoria: "Sustentabilidade",
-    localizacao: "Empresa fabricante de geomembranas, lonas plásticas, tanques escavados, bolsões para criação de peixes e lagos ornamentais. O estande apresentou soluções voltadas para armazenamento de água, piscicultura e paisagismo ornamental.",
-    descricao: "Competições robóticas e demonstrações de drones.",
+    localizacao: "Empresa fabricante de geomembranas, lonas plásticas, tanques escavados, bolsões para criação de peixes e lagos ornamentais.",
+    descricao: "Soluções voltadas para armazenamento de água, piscicultura e paisagismo ornamental.",
     horario: "16:00 - 23:00",
-    foto: "data/img/geotop.png",
-    coordenadas: [-13.070715, -55.944236]
+    foto: "assets/geotop.png",
+    coordenadas: [-13.070715, -55.944236],
   },
   {
-    nome: " Fênix Aero Agro / XAG",
+    nome: "Fênix Aero Agro / XAG",
     categoria: "Agricultura",
     localizacao: "Ao lado da Fiagril – estande de drones",
-    descricao: "Empresa voltada para venda, manutenção e prestação de serviços com drones agrícolas da marca XAG. Demonstraram aplicações em pulverização, adubação líquida e sólida, destacando o auxílio da tecnologia em áreas de difícil acesso no campo.",
+    descricao: "Empresa voltada para venda, manutenção e prestação de serviços com drones agrícolas da marca XAG. Demonstraram aplicações em pulverização, adubação líquida e sólida.",
     horario: "08:00 - 20:00",
-    foto: "data/img/fenix.png",
-    coordenadas: [-13.070293, -55.943415]
+    foto: "assets/fenix.png",
+    coordenadas: [-13.070293, -55.943415],
   },
   {
     nome: "Centro de Soluções Conectadas John Deere",
     categoria: "Agricultura",
     localizacao: "Área de exposição de máquinas agrícolas e construção",
-    descricao: "Apresentaram tecnologias da John Deere voltadas para agricultura e construção, incluindo tratores de pequeno, médio e grande porte, como o modelo 9R540 fabricado nos Estados Unidos. Também demonstraram a nova colheitadeira automatizada, com sistemas inteligentes de configuração e automação de colheita.",
+    descricao: "Tecnologias da John Deere para agricultura e construção, incluindo tratores e a nova colheitadeira automatizada, com sistemas inteligentes de automação.",
     horario: "16:00 - 22:00",
-    foto: "data/img/johnDeere.png",
-    coordenadas: [-13.070756, -55.942939]
+    foto: "assets/johnDeere.png",
+    coordenadas: [-13.070756, -55.942939],
   },
   {
     nome: "Rotary Club",
     categoria: "Sustentabilidade",
     localizacao: "Próximo aos estandes de vacinação e banco ortopédico",
-    descricao: "Organização internacional com mais de 120 anos de atuação, destacando projetos sociais e ambientais como erradicação da poliomielite, campanhas de vacinação, banco ortopédico, empréstimo de aparelhos ortopédicos, banco de leite humano, coleta de lixo eletrônico e ações de preservação ambiental, como o projeto “Uma Vida, Uma Árvore”.",
+    descricao: "Organização internacional com mais de 120 anos de atuação, destacando projetos sociais e ambientais como erradicação da poliomielite, banco ortopédico, banco de leite humano e o projeto Uma Vida, Uma Árvore.",
     horario: "16:00 - 22:00",
-    foto: "data/img/rotary.png",
-    coordenadas: [-13.071056, -55.943326]
+    foto: "assets/rotary.png",
+    coordenadas: [-13.071056, -55.943326],
   },
 ];
 
-const estado = {
-  mapa: null,
-  marcadores: [],
-  categoriasAtivas: new Set(),
-  searchTerm: '',
-  pontoSelecionado: null,
-  todasAsCategorias: new Set()
-};
+// ===== Estado =====
+const categoriasDisponiveis = [...new Set(pontosDeInteresse.map(p => p.categoria))].sort();
+const ativas = new Set(categoriasDisponiveis);
+let termoBusca = "";
+const markers = {};
 
-const iconesCategoria = {
-  'Acesso': 'fa-door-open',
-  'Educação': 'fa-book',
-  'Sustentabilidade': 'fa-leaf',
-  'Agricultura': 'fa-seedling'
-};
+// ===== Mapa =====
+const map = L.map("map", { center: CENTRO, zoom: 18, maxZoom: 22, minZoom: 14, scrollWheelZoom: true });
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: "ExpoLaSalle 2026 · © OpenStreetMap",
+  maxZoom: 22,
+}).addTo(map);
 
-
-function inicializar() {
-  inicializarMapa();
-  
-  extrairCategorias();
-  
-  renderizarFiltros();
-  
-  adicionarMarcadores();
-  
-  configurarEventListeners();
-  
-  centralizarMapa();
-}
-
-
-function inicializarMapa() {
-
-  const coordenadasCentro = [-13.070893, -55.943891];
-  
-  // Criar mapa
-  estado.mapa = L.map('map').setView(coordenadasCentro, 24);
-  
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Expolasalle 2026 - Mapa Interativo',
-    maxZoom: 24,
-    minZoom: 14
-  }).addTo(estado.mapa);
-}
-
-
-function extrairCategorias() {
-  pontosDeInteresse.forEach(ponto => {
-    estado.todasAsCategorias.add(ponto.categoria);
-  });
-}
-
-function renderizarFiltros() {
-  const filterContainer = document.getElementById('filterContainer');
-  filterContainer.innerHTML = '';
-  
-  const categoriasOrdenadas = Array.from(estado.todasAsCategorias).sort();
-  
-  categoriasOrdenadas.forEach(categoria => {
-    const div = document.createElement('div');
-    div.className = 'filter-checkbox';
-    
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.id = `filter-${categoria}`;
-    checkbox.value = categoria;
-    checkbox.checked = true;
-    
-    estado.categoriasAtivas.add(categoria);
-    
-    checkbox.addEventListener('change', (e) => {
-      if (e.target.checked) {
-        estado.categoriasAtivas.add(categoria);
-      } else {
-        estado.categoriasAtivas.delete(categoria);
-      }
-      atualizarMarcadores();
-    });
-    
-    const label = document.createElement('label');
-    label.htmlFor = `filter-${categoria}`;
-    label.textContent = categoria;
-    
-    div.appendChild(checkbox);
-    div.appendChild(label);
-    filterContainer.appendChild(div);
-  });
-}
-
-function adicionarMarcadores() {
-
-  estado.marcadores.forEach(marcador => {
-    estado.mapa.removeLayer(marcador.marker);
-  });
-  estado.marcadores = [];
-  
-  const pontosFiltrados = filtrarPontos();
-  
-  pontosFiltrados.forEach(ponto => {
-    
-    const icone = criarIconeCustomizado(ponto.categoria);
-    
-    const marcador = L.marker(ponto.coordenadas, {
-      icon: icone,
-      title: ponto.nome
-    }).addTo(estado.mapa);
-    
-    // Criar popup
-    const popupContent = criarPopupContent(ponto);
-    marcador.bindPopup(popupContent, {
-      maxWidth: 300,
-      className: 'popup-customizado'
-    });
-    
-    marcador.on('click', () => {
-      selecionarPonto(ponto);
-    });
-    
-    marcador.on('mouseover', () => {
-      marcador.openPopup();
-    });
-    
-    marcador.on('mouseout', () => {
-      if (estado.pontoSelecionado !== ponto) {
-        marcador.closePopup();
-      }
-    });
-    
-    estado.marcadores.push({
-      ponto,
-      marker: marcador
-    });
-  });
-}
-
-function criarIconeCustomizado(categoria) {
-  const iconeSVG = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
-    </svg>
-  `;
-  
+function makeIcon(categoria) {
+  const emoji = iconesCategoria[categoria] || "📍";
   return L.divIcon({
-    html: `
-      <div class="marker-icon" style="background-color: #6366f1;">
-        <i class="fas ${iconesCategoria[categoria] || 'fa-map-pin'}"></i>
-      </div>
-    `,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -40],
-    className: 'custom-marker'
+    className: "expo-marker",
+    html: `<div class="pin"><span>${emoji}</span></div>`,
+    iconSize: [36, 36],
+    iconAnchor: [18, 36],
+    popupAnchor: [0, -34],
   });
 }
 
-function criarPopupContent(ponto) {
+function popupHTML(p) {
   return `
-    <div class="popup-content">
-      <div class="popup-header">
-        <div>
-          <h3 class="popup-title">${ponto.nome}</h3>
-          <span class="popup-category">${ponto.categoria}</span>
-        </div>
-      </div>
-      
-      <img src="${ponto.foto}" alt="${ponto.nome}" class="popup-image" onerror="this.src='https://via.placeholder.com/280x180?text=Sem+Imagem'">
-      
-      <div class="popup-info">
-        <div class="popup-info-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <div>
-            <span class="popup-info-label">Localização:</span>
-            <span class="popup-info-value">${ponto.localizacao}</span>
-          </div>
-        </div>
-        
-        <div class="popup-info-item">
-          <i class="fas fa-clock"></i>
-          <div>
-            <span class="popup-info-label">Horário:</span>
-            <span class="popup-info-value">${ponto.horario}</span>
-          </div>
-        </div>
-        
-        <div class="popup-info-item">
-          <i class="fas fa-info-circle"></i>
-          <div>
-            <span class="popup-info-label">Descrição:</span>
-            <span class="popup-info-value">${ponto.descricao}</span>
-          </div>
-        </div>
+    <div class="popup">
+      <img src="${p.foto}" alt="${p.nome}" />
+      <div class="popup__body">
+        <span class="popup__badge">${p.categoria}</span>
+        <h4>${p.nome}</h4>
+        <p>${p.descricao}</p>
+        <p><strong>📍</strong> ${p.localizacao}</p>
+        <p><strong>🕐</strong> ${p.horario}</p>
       </div>
     </div>
   `;
 }
 
-function filtrarPontos() {
-  return pontosDeInteresse.filter(ponto => {
-    const categoriaAtiva = estado.categoriasAtivas.has(ponto.categoria);
-    const matchBusca = ponto.nome.toLowerCase().includes(estado.searchTerm.toLowerCase());
-    
-    return categoriaAtiva && matchBusca;
+pontosDeInteresse.forEach(p => {
+  const m = L.marker(p.coordenadas, { icon: makeIcon(p.categoria) })
+    .bindPopup(popupHTML(p), { maxWidth: 280 });
+  markers[p.nome] = m;
+});
+
+// ===== Render filtros + lista =====
+const $cats = document.getElementById("categorias");
+const $lista = document.getElementById("listaPontos");
+const $count = document.getElementById("countPontos");
+const $search = document.getElementById("search");
+const $sidebar = document.getElementById("sidebar");
+const $overlay = document.getElementById("overlay");
+
+function renderCategorias() {
+  $cats.innerHTML = "";
+  categoriasDisponiveis.forEach(c => {
+    const active = ativas.has(c);
+    const label = document.createElement("label");
+    label.className = "cat" + (active ? " is-active" : "");
+    label.innerHTML = `
+      <input type="checkbox" ${active ? "checked" : ""} />
+      <span>${iconesCategoria[c] || "📍"}</span>
+      <span style="font-weight:500">${c}</span>
+    `;
+    label.querySelector("input").addEventListener("change", () => {
+      ativas.has(c) ? ativas.delete(c) : ativas.add(c);
+      atualizar();
+    });
+    $cats.appendChild(label);
+  });
+}
+
+function pontosVisiveis() {
+  const t = termoBusca.toLowerCase();
+  return pontosDeInteresse.filter(p =>
+    ativas.has(p.categoria) && p.nome.toLowerCase().includes(t)
+  );
+}
+
+function renderLista() {
+  const v = pontosVisiveis();
+  $count.textContent = v.length;
+  $lista.innerHTML = "";
+  if (v.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent = "Nenhum ponto encontrado.";
+    $lista.appendChild(empty);
+    return;
+  }
+  v.forEach(p => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "ponto";
+    btn.innerHTML = `
+      <img src="${p.foto}" alt="" />
+      <div style="min-width:0;flex:1">
+        <div class="ponto__nome">${p.nome}</div>
+        <div class="ponto__cat">${p.categoria}</div>
+      </div>
+    `;
+    btn.addEventListener("click", () => focar(p));
+    $lista.appendChild(btn);
   });
 }
 
 function atualizarMarcadores() {
-  adicionarMarcadores();
-  renderizarListaPontos();
-}
-
-function selecionarPonto(ponto) {
-  estado.pontoSelecionado = ponto;
-  
-  // Atualizar destaque na lista
-  document.querySelectorAll('.ponto-item').forEach(item => {
-    item.classList.remove('active');
-  });
-  
-  const itemAtivo = Array.from(document.querySelectorAll('.ponto-item')).find(item => {
-    return item.querySelector('.ponto-item-name').textContent === ponto.nome;
-  });
-  
-  if (itemAtivo) {
-    itemAtivo.classList.add('active');
-  }
-  
-  // Atualizar destaque no mapa
-  estado.marcadores.forEach(m => {
-    if (m.ponto === ponto) {
-      m.marker.openPopup();
-      estado.mapa.panTo(m.marker.getLatLng());
-    }
-  });
-  
-  // Fechar sidebar em mobile
-  const sidebar = document.querySelector('.sidebar');
-  if (sidebar.classList.contains('active')) {
-    sidebar.classList.remove('active');
-  }
-}
-
-
-function centralizarMapa() {
-  if (estado.marcadores.length === 0) return;
-  
-  const group = new L.featureGroup(estado.marcadores.map(m => m.marker));
-  estado.mapa.fitBounds(group.getBounds().pad(0.1));
-}
-
-function configurarEventListeners() {
-  const searchInput = document.getElementById('searchInput');
-  searchInput.addEventListener('input', (e) => {
-    estado.searchTerm = e.target.value;
-    atualizarMarcadores();
-  });
-  
-  
-  // Toggle sidebar em mobile
-  const btnToggleSidebar = document.querySelector('.btn-toggle-sidebar');
-  const btnCloseSidebar = document.querySelector('.btn-close-sidebar');
-  const sidebar = document.querySelector('.sidebar');
-  
-  btnToggleSidebar.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-    // Aguarda a animação da sidebar e força o Leaflet a recalcular o tamanho
-    setTimeout(() => {
-      if (estado.mapa) estado.mapa.invalidateSize();
-    }, 350);
-  });
-  
-  btnCloseSidebar.addEventListener('click', () => {
-    sidebar.classList.remove('active');
-    setTimeout(() => {
-      if (estado.mapa) estado.mapa.invalidateSize();
-    }, 350);
-  });
-  
-  document.addEventListener('click', (e) => {
-    if (!sidebar.contains(e.target) && !btnToggleSidebar.contains(e.target)) {
-      const wasActive = sidebar.classList.contains('active');
-      sidebar.classList.remove('active');
-      if (wasActive) {
-        setTimeout(() => {
-          if (estado.mapa) estado.mapa.invalidateSize();
-        }, 350);
-      }
-    }
+  const visiveis = new Set(pontosVisiveis().map(p => p.nome));
+  pontosDeInteresse.forEach(p => {
+    const m = markers[p.nome];
+    if (visiveis.has(p.nome)) { if (!map.hasLayer(m)) m.addTo(map); }
+    else if (map.hasLayer(m)) map.removeLayer(m);
   });
 }
 
-document.addEventListener('DOMContentLoaded', inicializar);
+function atualizar() {
+  renderCategorias();
+  renderLista();
+  atualizarMarcadores();
+}
 
-// Ajustar tamanho do mapa
-window.addEventListener('resize', () => {
-  if (estado.mapa) {
-    estado.mapa.invalidateSize();
-  }
+function focar(p) {
+  fecharSidebar();
+  map.flyTo(p.coordenadas, 20, { duration: 0.8 });
+  setTimeout(() => markers[p.nome]?.openPopup(), 850);
+}
+
+function abrirSidebar() { $sidebar.classList.add("is-open"); $overlay.hidden = false; }
+function fecharSidebar() { $sidebar.classList.remove("is-open"); $overlay.hidden = true; }
+
+// ===== Eventos =====
+$search.addEventListener("input", e => { termoBusca = e.target.value; renderLista(); atualizarMarcadores(); });
+document.getElementById("sidebarToggle").addEventListener("click", abrirSidebar);
+document.getElementById("sidebarClose").addEventListener("click", fecharSidebar);
+$overlay.addEventListener("click", fecharSidebar);
+document.getElementById("resetBtn").addEventListener("click", () => map.setView(CENTRO, 18));
+
+// Smooth scroll para âncoras
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener("click", e => {
+    const id = a.getAttribute("href").slice(1);
+    const el = document.getElementById(id);
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: "smooth", block: "start" }); }
+  });
 });
 
+// Garantir tamanho correto após render
+window.addEventListener("load", () => setTimeout(() => map.invalidateSize(), 200));
 
-
-
-
-
-
+atualizar();

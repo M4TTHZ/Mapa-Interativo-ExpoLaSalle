@@ -1,158 +1,148 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExpoLaSalle - Mapa Interativo do Evento</title>
-    
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
-    
-    <!-- Font Awesome para ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ExpoLaSalle · Mapa Interativo do Evento</title>
+  <meta name="description" content="Explore os pontos de interesse da ExpoLaSalle em um mapa interativo, moderno e totalmente responsivo." />
+  <meta property="og:title" content="ExpoLaSalle · Mapa Interativo" />
+  <meta property="og:description" content="Mapa interativo dos estandes, educação, agricultura e sustentabilidade da ExpoLaSalle." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <i class="fas fa-map-location-dot"></i>
-                <span>ExpoLaSalle</span>
-            </div>
-            <nav class="nav">
-                <a href="#home" class="nav-link">Início</a>
-                <a href="#mapa" class="nav-link">Mapa</a>
-                <a href="#sobre" class="nav-link">Sobre</a>
-            </nav>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#home" class="brand">
+        <span class="brand__icon">📍</span>
+        <span>Expo<span class="brand__accent">LaSalle</span></span>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#home">Início</a>
+        <a href="#mapa">Mapa</a>
+        <a href="#sobre">Sobre</a>
+      </nav>
+    </div>
+  </header>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h2>Mapa ExpoLaSalle</h2>
-            <p>Navegue interativamente pelos pontos de interesse do evento</p>
+  <main>
+    <section id="home" class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__content">
+        <span class="chip">ExpoLaSalle · Edição 2026</span>
+        <h1>Mapa Interativo <br /><span class="accent">do Evento</span></h1>
+        <p>Navegue interativamente pelos pontos de interesse, descubra estandes, horários e localizações em um clique.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#mapa">Abrir mapa →</a>
+          <a class="btn btn--ghost" href="#sobre">Saber mais</a>
         </div>
+      </div>
     </section>
 
-    <main class="main-content">
-        <section class="mapa-section" id="mapa">
-            <div class="mapa-container">
-                <aside class="sidebar">
-                    <div class="sidebar-header">
-                        <h3>Filtros e Busca</h3>
-                        <button class="btn-close-sidebar" id="btnCloseSidebar">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-
-                    <div class="search-box">
-                        <input 
-                            type="text" 
-                            id="searchInput" 
-                            placeholder="Buscar por nome..." 
-                            class="search-input"
-                        >
-                        <i class="fas fa-search search-icon"></i>
-                    </div>
-
-                    <div class="filter-group">
-                        <h4>Categorias</h4>
-                        <div class="filter-options" id="filterContainer">
-                        </div>
-                    </div>
-
-                    
-                    <div class="action-buttons">
-                        <button class="btn btn-primary" id="btnReset" onclick="centralizarMapa()">
-                            <i class="fas fa-redo"></i> Resetar Mapa
-                        </button>
-                    </div>
-                </aside>
-
-                <!-- Mapa -->
-                <div class="map-wrapper">
-                    <button class="btn-toggle-sidebar" id="btnToggleSidebar">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div id="map" class="map"></div>
-                </div>
-            </div>
-        </section>
-
-        
-        <section class="sobre-section" id="sobre">
-            <div class="container">
-                <h2>Sobre o Projeto</h2>
-                
-                <div class="sobre-content">
-                    <div class="sobre-card">
-                        <h3><i class="fas fa-bullseye"></i> Objetivo</h3>
-                        <p>
-                            Criar uma aplicação web moderna e responsiva que permite aos visitantes do ExpoLaSalle 
-                            explorar interativamente todos os pontos de interesse do evento através de um mapa intuitivo 
-                            e visualmente atraente.
-                        </p>
-                    </div>
-
-                    <div class="sobre-card">
-                        <h3><i class="fas fa-cogs"></i> Tecnologias Utilizadas</h3>
-                        <ul class="tech-list">
-                            <li><strong>HTML5:</strong> Estrutura semântica e acessível</li>
-                            <li><strong>CSS3:</strong> Design responsivo com Flexbox e Grid</li>
-                            <li><strong>JavaScript:</strong> Interatividade e lógica da aplicação</li>
-                            <li><strong>Leaflet.js:</strong> Biblioteca de mapeamento interativo</li>
-                            <li><strong>OpenStreetMap:</strong> Dados de mapa de código aberto</li>
-                        </ul>
-                    </div>
-
-                    <div class="sobre-card">
-                        <h3><i class="fas fa-lightbulb"></i> Motivos das Escolhas Técnicas</h3>
-                        <ul class="tech-list">
-                            <li><strong>Leaflet.js:</strong> Leve, flexível e fácil de customizar</li>
-                            <li><strong>Vanilla JavaScript:</strong> Sem dependências pesadas, melhor performance</li>
-                            <li><strong>CSS Grid + Flexbox:</strong> Layout moderno e responsivo</li>
-                            <li><strong>Mobile First:</strong> Otimizado para todos os dispositivos</li>
-                        </ul>
-                    </div>
-
-                    <div class="sobre-card full-width">
-                        <h3><i class="fas fa-users"></i> Equipe</h3>
-                        <p>
-                            Projeto desenvolvido pelos alunos do 3° Semestre de Gestão de TI:
-                            <p>
-                                <strong>- André Zanquetin (Anotador e Dev Júnior📝🖥️)</strong>
-                            </p>
-                            <p> 
-                                <strong>- Fabielle Virginio (Anotadora e Dev Pleno📝🖥️)</strong>
-                            </p>
-                            <p> 
-                                <strong>- Kevin Cristhian (Fotógrafo e Dev Pleno📸🖥️)</strong>
-                            </p>
-                            <p> 
-                                <strong>- Matheus Ramalho (Dev Sênior🖥️)</strong>.
-                            </p>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 ExpoLaSalle - Mapa Interativo do Evento</p>
+    <section id="mapa" class="mapa-section">
+      <div class="container mapa-header">
+        <div>
+          <span class="eyebrow">Mapa interativo</span>
+          <h2>Explore os estandes</h2>
         </div>
-    </footer>
+        <p class="muted">Filtre por categoria, busque por nome ou toque em um ponto.</p>
+      </div>
 
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-    
-    
-    <script src="data/pontos.js"></script>
-    
-    
-    <script src="script.js"></script>
+      <div class="container">
+        <div class="map-wrap">
+          <button id="sidebarToggle" class="floating-btn floating-btn--left" type="button">☰ Filtros</button>
+
+          <aside id="sidebar" class="sidebar" aria-label="Filtros e busca">
+            <div class="sidebar__head">
+              <h3>Filtros & Busca</h3>
+              <button id="sidebarClose" class="icon-btn" aria-label="Fechar">✕</button>
+            </div>
+
+            <div class="search">
+              <span class="search__icon">🔍</span>
+              <input id="search" type="search" placeholder="Buscar por nome..." />
+            </div>
+
+            <div>
+              <h4 class="section-label">Categorias</h4>
+              <div id="categorias" class="categorias"></div>
+            </div>
+
+            <div>
+              <h4 class="section-label">Pontos (<span id="countPontos">0</span>)</h4>
+              <div id="listaPontos" class="lista-pontos"></div>
+            </div>
+          </aside>
+
+          <div class="map-area">
+            <button id="resetBtn" class="floating-btn floating-btn--right" type="button">↺ Resetar</button>
+            <div id="map" role="application" aria-label="Mapa do evento"></div>
+          </div>
+
+          <div id="overlay" class="overlay" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="sobre">
+      <div class="container">
+        <div class="sobre__head">
+          <span class="eyebrow">Sobre o projeto</span>
+          <h2>Construído por estudantes, para a comunidade</h2>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card__icon">🎯</div>
+            <h3>Objetivo</h3>
+            <p>Uma aplicação web moderna e responsiva que permite aos visitantes do ExpoLaSalle explorar todos os pontos de interesse do evento através de um mapa intuitivo.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">⚙️</div>
+            <h3>Tecnologias</h3>
+            <ul>
+              <li>HTML5 semântico</li>
+              <li>CSS3 moderno (Grid + Flex)</li>
+              <li>JavaScript (ES6+)</li>
+              <li>Leaflet.js + OpenStreetMap</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="card__icon">💡</div>
+            <h3>Por quê</h3>
+            <ul>
+              <li>Leaflet leve e customizável</li>
+              <li>Mobile-first responsivo</li>
+              <li>Performance e acessibilidade</li>
+              <li>Sem dependências de build</li>
+            </ul>
+          </article>
+          <article class="card card--team">
+            <div class="team__head">
+              <div class="card__icon card__icon--gold">👥</div>
+              <h3>Equipe — 3° Semestre de Gestão de TI</h3>
+            </div>
+            <div class="team__grid">
+              <div class="member"><strong>André Zanquetin</strong><span>Anotador & Dev Júnior 📝</span></div>
+              <div class="member"><strong>Fabielle Virginio</strong><span>Anotadora & Dev Pleno 📝</span></div>
+              <div class="member"><strong>Kevin Cristhian</strong><span>Fotógrafo & Dev Pleno 📸</span></div>
+              <div class="member"><strong>Matheus Ramalho</strong><span>Dev Sênior 🖥️</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2026 ExpoLaSalle · Mapa Interativo do Evento</footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="script.js"></script>
 </body>
 </html>
