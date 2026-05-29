@@ -89,7 +89,7 @@ const pontosDeInteresse = [
     descricao: "Organização internacional com mais de 120 anos de atuação, destacando projetos sociais e ambientais como erradicação da poliomielite, banco ortopédico, banco de leite humano e o projeto Uma Vida, Uma Árvore.",
     horario: "16:00 - 22:00",
     foto: "assets/rotary.png",
-    coordenadas: [-13.071056, -55.943326],
+    coordenadas: [-13.070590, -55.943580],
   },
 ];
 
